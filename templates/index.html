@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for curso in cursos %}
+            <div class="col-xl-4 col-md-6">
+                <div class="card">
+                    <img src="{{ curso.foto.url }}" class="card-img-top" alt="{{ curso.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ curso.nombre }} <span class="badge bg-primary">${{ curso.precio }}</span>
+                        </h5>
+                        <p class="card-text my-1"><small class="text-muted">Cupo actual: <b>{{ curso.get_cupo }}</b></small></p>
+                        <p class="card-text">{{ curso.descripcion }}</p>
+                        <a href="/inscribirse/{{ curso.id }}/" class="btn btn-primary">
+                            Inscribirse
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

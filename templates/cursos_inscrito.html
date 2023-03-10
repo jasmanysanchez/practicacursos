@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for inscrito in inscritos %}
+                <div class="col-xl-4 col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img style="height: 100%;object-fit: cover;%" src="{{ inscrito.curso.foto.url }}" class="img-fluid rounded-start" alt="{{ inscrito.curso.nombre }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                <h5 class="card-title">{{ inscrito.curso.nombre }}</h5>
+                                <p class="card-text">{{ inscrito.curso.descripcion }}</p>
+                                <p class="card-text"><small class="text-muted">{{ inscrito.fecha_registro }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if inscritos.count == 0 %}
+                <div class="col text-center">
+                    <div class="alert alert-info" role="alert">
+                        Aún no te inscribes en ningún curso.
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
